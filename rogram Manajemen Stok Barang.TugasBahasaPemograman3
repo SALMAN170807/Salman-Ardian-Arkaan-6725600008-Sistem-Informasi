@@ -1,0 +1,149 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyN70YuLOg/dqmYoK6txXteY",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/SALMAN170807/Salman-Ardian-Arkaan-6725600008-Sistem-Informasi/blob/main/rogram%20Manajemen%20Stok%20Barang.TugasBahasaPemograman3\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "txuEFjU-OheX",
+        "outputId": "f920a785-5911-432a-ee83-0e8de18fd22d"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "=== MENU MANAJEMEN STOK ===\n",
+            "1. Tampilkan Stok Barang\n",
+            "2. Tambah Barang\n",
+            "3. Update Stok Barang\n",
+            "4. Hapus Barang\n",
+            "5. Keluar\n",
+            "Pilih menu (1-5): 1\n",
+            "\n",
+            "=== DAFTAR STOK BARANG ===\n",
+            "Belum ada data barang.\n",
+            "\n",
+            "=== MENU MANAJEMEN STOK ===\n",
+            "1. Tampilkan Stok Barang\n",
+            "2. Tambah Barang\n",
+            "3. Update Stok Barang\n",
+            "4. Hapus Barang\n",
+            "5. Keluar\n",
+            "Pilih menu (1-5): 2\n",
+            "\n",
+            "=== TAMBAH BARANG ===\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Array untuk menyimpan nama barang\n",
+        "nama_barang = []\n",
+        "# Array untuk menyimpan jumlah stok barang\n",
+        "stok_barang = []\n",
+        "\n",
+        "def tampilkan_data():\n",
+        "    print(\"\\n=== DAFTAR STOK BARANG ===\")\n",
+        "    if len(nama_barang) == 0:\n",
+        "        print(\"Belum ada data barang.\")\n",
+        "    else:\n",
+        "        for i in range(len(nama_barang)):\n",
+        "            print(f\"{i+1}. {nama_barang[i]} - Stok: {stok_barang[i]}\")\n",
+        "\n",
+        "\n",
+        "def tambah_barang():\n",
+        "    print(\"\\n=== TAMBAH BARANG ===\")\n",
+        "    nama = input(\"Masukkan nama barang: \")\n",
+        "    stok = int(input(\"Masukkan jumlah stok: \"))\n",
+        "\n",
+        "    nama_barang.append(nama)\n",
+        "    stok_barang.append(stok)\n",
+        "    print(\"Barang berhasil ditambahkan!\")\n",
+        "\n",
+        "\n",
+        "def update_stok():\n",
+        "    tampilkan_data()\n",
+        "    print(\"\\n=== UPDATE STOK ===\")\n",
+        "    index = int(input(\"Pilih nomor barang: \")) - 1\n",
+        "\n",
+        "    if 0 <= index < len(nama_barang):\n",
+        "        stok_baru = int(input(f\"Masukkan stok baru untuk {nama_barang[index]}: \"))\n",
+        "        stok_barang[index] = stok_baru\n",
+        "        print(\"Stok berhasil diperbarui!\")\n",
+        "    else:\n",
+        "        print(\"Nomor tidak valid!\")\n",
+        "\n",
+        "\n",
+        "def hapus_barang():\n",
+        "    tampilkan_data()\n",
+        "    print(\"\\n=== HAPUS BARANG ===\")\n",
+        "    index = int(input(\"Pilih nomor barang: \")) - 1\n",
+        "\n",
+        "    if 0 <= index < len(nama_barang):\n",
+        "        del nama_barang[index]\n",
+        "        del stok_barang[index]\n",
+        "        print(\"Barang berhasil dihapus!\")\n",
+        "    else:\n",
+        "        print(\"Nomor tidak valid!\")\n",
+        "\n",
+        "\n",
+        "def menu():\n",
+        "    while True:\n",
+        "        print(\"\\n=== MENU MANAJEMEN STOK ===\")\n",
+        "        print(\"1. Tampilkan Stok Barang\")\n",
+        "        print(\"2. Tambah Barang\")\n",
+        "        print(\"3. Update Stok Barang\")\n",
+        "        print(\"4. Hapus Barang\")\n",
+        "        print(\"5. Keluar\")\n",
+        "\n",
+        "        pilihan = input(\"Pilih menu (1-5): \")\n",
+        "\n",
+        "        if pilihan == \"1\":\n",
+        "            tampilkan_data()\n",
+        "        elif pilihan == \"2\":\n",
+        "            tambah_barang()\n",
+        "        elif pilihan == \"3\":\n",
+        "            update_stok()\n",
+        "        elif pilihan == \"4\":\n",
+        "            hapus_barang()\n",
+        "        elif pilihan == \"5\":\n",
+        "            print(\"Program selesai.\")\n",
+        "            break\n",
+        "        else:\n",
+        "            print(\"Pilihan tidak valid!\")\n",
+        "\n",
+        "# Jalankan program\n",
+        "menu()\n"
+      ]
+    }
+  ]
+}
